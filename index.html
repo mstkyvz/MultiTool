@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Security Detectors</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: url('https://i.pinimg.com/originals/19/e1/71/19e171391727335f510db47a13269d2d.gif') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Courier New', Courier, monospace; 
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #0ff; 
+        }
+
+        h1 {
+            border-bottom: 2px solid #0ff;
+            padding-bottom: 10px;
+        }
+
+        .form-container {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            border: 2px solid #0ff;
+            border-radius: 10px;
+            background-color: rgba(0, 0, 0, 0.6);
+            width: 300px;
+            margin: 10px;
+        }
+
+        textarea {
+            width: 280px;
+            height: 100px;
+            border: 2px solid #0ff;
+            background-color: rgba(0, 0, 0, 0.8); 
+            color: #0ff;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: 'Courier New', Courier, monospace;
+            resize: none;
+        }
+
+        input[type="submit"] {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #0ff; 
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #08e; 
+        }
+
+        h2 {
+            color: white;
+            margin-top: 20px;
+            border-top: 2px solid #0ff;
+            padding-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <form action="/xss-detection" method="post">
+            <h1>XSS Detector</h1>
+            <textarea name="xss_payload" placeholder="XSS payload'ınızı buraya girin"></textarea>
+            <input type="submit" value="Tespit Et">
+        </form>
+
+        <form action="/sql-detection" method="post">
+            <h1>SQL Detector</h1>
+            <textarea name="sql_payload" placeholder="SQL payload'ınızı buraya girin"></textarea>
+            <input type="submit" value="Tespit Et">
+        </form>
+
+        <form action="/fraud-detection" method="post">
+            <h1>Fraud Detector</h1>
+            <textarea name="fraud_payload" placeholder="Fraud payload'ınızı buraya girin"></textarea>
+            <input type="submit" value="Tespit Et">
+        </form>
+    </div>
+
+    {% if result %}
+    <h2>Sonuç: {{ result }}</h2>
+    {% endif %}
+</body>
+</html>
